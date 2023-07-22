@@ -1,0 +1,83 @@
+@font-face {
+    font-family: 'Patua One';
+    src: url(fonts/PatuaOne-Regular.ttf);
+}
+
+@font-face {
+    font-family: 'Alfa Slab One';
+    src: url(fonts/AlfaSlabOne-Regular.ttf);
+}
+
+:root {
+    --black: rgb(34, 40, 49);
+    --grey: rgb(57, 62, 70);
+    --teal: rgb(0, 173, 181);
+    --white: rgb(238, 238, 238); 
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 55px 1fr 40px;
+    background-color: var(--white);
+}
+
+.heading {
+    text-align: center;
+    letter-spacing: 0.3rem;
+    width: 100%;
+    font-size: 2rem;
+    font-family: "Alfa Slab One";
+    color: var(--white);
+    background-color: var(--black);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+}
+
+.panel {
+    background-color: var(--grey);
+    
+}
+
+.panel button {
+    padding: 10px;
+    font-family: 'Patua One';
+    font-size: 1.1rem;
+    
+    background-color: var(--teal);
+    color: var(--white);
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    
+    margin: 10px;
+    display: flex;
+    border-radius: 10px;
+    width: calc(100% - 20px); /* 100% - padding */
+
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    color: var(--white);
+    background-color: var(--black);
+    font-family: 'Patua One';
+    font-size: 0.8rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.05rem;
+}
