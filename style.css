@@ -114,6 +114,46 @@ body {
     margin-left: 15px;
 }
 
+form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    height: max-content;
+    width: max-content;
+    
+    background-color: var(--black);
+    color: var(--white);
+    border: 10px solid var(--grey);
+    border-radius: 20px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+form, form button {
+    font-family: 'Patua One';
+}
+
+form p {
+    padding: 5px;
+}
+
+form label:not(form label[for="book-read"]) {
+    display: block;
+}
+
+form button {
+    padding: 5px 25px;
+}
+
 .footer {
     color: var(--white);
     background-color: var(--black);
