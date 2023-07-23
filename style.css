@@ -147,25 +147,6 @@ form p {
     padding: 5px;
 }
 
-.read-text {
-    position: relative;
-}
-
-
-.not-read .read-text::after, .read .read-text::after {
-    position: absolute;
-    left: 15px;
-}
-
-.read .read-text::after {
-    content: "Yes";
-}
-
-.not-read .read-text::after {
-    content: "No";
-}
-
-
 form label:not(form label[for="book-read"]) {
     display: block;
 }
