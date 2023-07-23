@@ -12,12 +12,12 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(book) {
     myLibrary.push(book);
 
-    const cards = document.querySelector('.cards');
+    const cardsContainer = document.querySelector('.cards');
     const index = myLibrary.length-1
 
     const cardHTML = fillCardTemplate.call(book, index);
 
-    cards.innerHTML += cardHTML;
+    cardsContainer.innerHTML += cardHTML;
 
     addEvenets();
 }
@@ -100,11 +100,11 @@ function addEvenets() {
     removeButtons.forEach(removeBtn => {
         removeBtn.addEventListener('click', e => {
             const cardIndex = e.target.getAttribute('data-library-index');
-
             const card = document.querySelector(`[data-library-index="${cardIndex}"].card`)
+            
             myLibrary.splice(cardIndex, 1);
             card.remove();
-            rebalance(cardIndex)
+            rebalance();
         })
     })
 
