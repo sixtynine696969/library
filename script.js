@@ -62,7 +62,8 @@ function cardTemplate() { return (
         <span class="pages">${this.pages}</span>
     </div>
     <div class="read-container">
-        <span class="${this.read ? 'read' : 'not-read'}">Read:<span class="read-text"></span></span>
+        <span>Read:</span>
+        <span class="read">${this.read ? 'Yes' : 'No'}</span>
     </div>
 </div>`
 )
