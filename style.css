@@ -114,6 +114,21 @@ body {
     margin-left: 15px;
 }
 
+.card-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-buttons button {
+    font-family: 'Patua One';
+    padding: 5px;
+    background-color: var(--grey);
+    color: var(--white);
+    border-radius: 10px;
+}
+
 form {
     position: absolute;
     left: 0;
