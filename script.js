@@ -9,8 +9,14 @@ function Book(title, author, pages, read) {
     this.info = () => `${title} by ${author}, ${pages} pages, ${read ? 'read' : 'not read'}`
 }
 
-function addBookToLibrary() {
+function addBookToLibrary(book) {
+    myLibrary.push(book);
 
+    const cards = document.querySelector('.cards');
+    
+    const cardHTML = cardTemplate.bind(book)();
+
+    cards.innerHTML += cardHTML;
 }
 
 const addBookButton = document.querySelector('.add-btn');
@@ -29,7 +35,6 @@ addBookButton.addEventListener('click', () => {
     })
     
     submitButton.addEventListener('click', e => {
-        
         const title = document.querySelector('#book-title').value;
         const author = document.querySelector('input#book-author').value;
         const pages = document.querySelector('input#book-pages').value;
@@ -37,27 +42,31 @@ addBookButton.addEventListener('click', () => {
         form.remove();
 
         // console.log(title);console.log(author);console.log(pages);console.log(read);
+
+        addBookToLibrary(new Book(title, author, pages, read))
     })
 })
 
-// const card = `<div class="card">
-// <div class="title-container">
-//     <span>Title:</span>
-//     <span class="title">${}</span>
-// </div>
-// <div class="author-container">
-//     <span>Author:</span>
-//     <span class="author">${}</span>
-// </div>
-// <div class="pages-container">
-//     <span>Pages:</span>
-//     <span class="pages">${}</span>
-// </div>
-// <div class="read-container">
-//     <span>Read:</span>
-//     <span class="read">${}</span>
-// </div>
-// </div>`
+function cardTemplate() { return (
+`<div class="card">
+    <div class="title-container">
+        <span>Title:</span>
+        <span class="title">${this.title}</span>
+    </div>
+    <div class="author-container">
+        <span>Author:</span>
+        <span class="author">${this.author}</span>
+    </div>
+    <div class="pages-container">
+        <span>Pages:</span>
+        <span class="pages">${this.pages}</span>
+    </div>
+    <div class="read-container">
+        <span class="${this.read ? 'read' : 'not-read'}">Read:<span class="read-text"></span></span>
+    </div>
+</div>`
+)
+}
 
 const formHTML = `<form action="">
 <p>
