@@ -67,20 +67,52 @@ addBookButton.addEventListener('click', () => {
     cancelButton.addEventListener('click', () => {
         form.remove();
     })
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+        const title = document.querySelector('#book-title');
+        const titleError = document.querySelector('#book-title + span.error');
     
-    submitButton.addEventListener('click', e => {
-        const title = document.querySelector('#book-title').value;
-        const author = document.querySelector('input#book-author').value;
-        const pages = document.querySelector('input#book-pages').value;
+        const author = document.querySelector('input#book-author');
+        const authorError = document.querySelector('input#book-author + span.error');
+    
+        const pages = document.querySelector('input#book-pages');
+        const pagesError = document.querySelector('input#book-pages + span.error');
+    
         const read = document.querySelector('input#book-read:checked') ? true : false
-        form.remove();
-
-        // console.log(title);console.log(author);console.log(pages);console.log(read);
-
-        addBookToLibrary(new Book(title, author, pages, read))
-    })
+    
+        if (title.validity.valid && author.validity.valid && pages.validity.valid) {
+            const book = new Book(title.value, author.value, pages.value, read)
+            addBookToLibrary(book);
+            form.remove();
+            return
+        }
+    
+        if (!title.validity.valid) {
+            titleError.textContent = title.validationMessage;
+            titleError.classList.add('active');
+        } else {
+            titleError.textContent = ''
+            titleError.classList.remove('active');
+        }
+    
+        if (!author.validity.valid) {
+            authorError.textContent = author.validationMessage;
+            authorError.classList.add('active');
+        } else {
+            authorError.textContent = ''
+            authorError.classList.remove('active');
+        }
+    
+        if (!pages.validity.valid) {
+            pagesError.textContent = pages.validationMessage;
+            pagesError.classList.add('active');
+        } else {
+            pagesError.textContent = ''
+            pagesError.classList.remove('active');
+        }
+    }    
 })
-
 
 function rebalance() {
     const cards = document.querySelectorAll('.card');
@@ -154,25 +186,34 @@ function fillCardTemplate(index) {
     )
 }
 
-const formHTML = `<form action="">
+const formHTML = `<form action="" novalidate>
 <p>
-    <label for="book-title">Title:</label>
-    <input type="text" name="book-title" id="book-title">
+    <label for="book-title" class="input-field">
+        <span>Title:</span>
+        <input type="text" name="book-title" id="book-title" required>
+        <span class="error"></span>
+    </label>
 </p>
 <p>
-    <label for="book-author">Author:</label>
-    <input type="text" name="book-author" id="book-author">
+    <label for="book-author" class="input-field">
+        <span>Author:</span>
+        <input type="text" name="book-author" id="book-author" required>
+        <span class="error"></span>
+    </label>
 </p>
 <p>
-    <label for="book-pages">Number of pages:</label>
-    <input type="number" name="book-pages" id="book-pages" min=0>
+    <label for="book-pages" class="input-field">
+        <span>Number Of Pages:</span>
+        <input type="number" name="book-pages" id="book-pages" min=0 required>
+        <span class="error"></span>
+    </label>
 </p>
 <p>
     <label for="book-read">Have you read it?</label>
     <input type="checkbox" name="book-read" id="book-read">
 </p>
 <div class="buttons">
-    <button type="button" class="submit">Submit</button>
+    <button class="submit">Submit</button>
     <button type="button" class="cancel"> Cancel</button>
 </div>
 </form>`
