@@ -162,8 +162,27 @@ form p {
     padding: 5px;
 }
 
-form label:not(form label[for="book-read"]) {
-    display: block;
+form p label:not(form p label[for="book-read"]) {
+    display: flex;
+    flex-direction: column;
+}
+
+form p label.input-field span.error {
+    display: none;
+}
+
+form p label.input-field span.error.active {
+    background-color: pink;
+    border: 1px solid #900;
+    /* border-left: 1px solid #900;
+    border-bottom: 1px solid #900;
+    border-right: 1px solid #900; */
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--grey);
+    font-size: 80%;
 }
 
 form button {
