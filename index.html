@@ -22,5 +22,36 @@
     <div class="footer">
         <p>Copyright &copy; 2023 sixtynine696969. All rights reserved.</p>
     </div>
+    <form action="" novalidate>
+        <p>
+            <label for="book-title" class="input-field">
+                <span>Title:</span>
+                <input type="text" name="book-title" id="book-title" required>
+                <span class="error"></span>
+            </label>
+        </p>
+        <p>
+            <label for="book-author" class="input-field">
+                <span>Author:</span>
+                <input type="text" name="book-author" id="book-author" required>
+                <span class="error"></span>
+            </label>
+        </p>
+        <p>
+            <label for="book-pages" class="input-field">
+                <span>Number of pages:</span>
+                <input type="number" name="book-pages" id="book-pages" min=0 required>
+                <span class="error"></span>
+            </label>
+        </p>
+        <p>
+            <label for="book-read">Have you read it?</label>
+            <input type="checkbox" name="book-read" id="book-read">
+        </p>
+        <div class="buttons">
+            <button class="submit">Submit</button>
+            <button type="button" class="cancel"> Cancel</button>
+        </div>
+        </form>`
 </body>
 </html>
