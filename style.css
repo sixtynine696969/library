@@ -171,6 +171,10 @@ form p label.input-field span.error {
     display: none;
 }
 
+form p label.input-field > span:nth-child(1) {
+    margin-bottom: 3px;
+}
+
 form p label.input-field span.error.active {
     background-color: pink;
     border: 1px solid #900;
